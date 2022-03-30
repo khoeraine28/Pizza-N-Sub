@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderIndexComponent } from './order-index/order-index.component';
+import { OrderPlacedScreenComponent } from './order-placed-screen/order-placed-screen.component';
 
 const routes: Routes = [
   { 
@@ -16,7 +17,11 @@ const routes: Routes = [
               (m) => m.OrderStepperModule,
           ),
     }]
-}
+  },
+  {
+    path: 'placed',
+    component: OrderPlacedScreenComponent
+  }
 ];
 
 @NgModule({

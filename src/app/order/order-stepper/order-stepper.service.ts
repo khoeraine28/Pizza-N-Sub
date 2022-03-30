@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { Order } from './order-type/order.type';
+import * as _ from 'lodash';
 
 //@todo refactor service to use type interface
 
@@ -29,7 +30,9 @@ export class OrderStepperService {
     }
   };
 
-  private orderComplete = new Subject<Order>();
+  emptyOrderInformation: Order = _.cloneDeep(this.orderInformation)
+
+  public orderComplete = new Subject<Order>();
 
   getTicketInformation(): Order {
       return this.orderInformation;
@@ -41,5 +44,6 @@ export class OrderStepperService {
 
   complete() {
       this.orderComplete.next(this.orderInformation);
+      this.orderInformation = _.cloneDeep(this.emptyOrderInformation)
   }
 }

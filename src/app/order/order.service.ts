@@ -36,6 +36,19 @@ export class OrderService {
     return [];
   }
 
+  submitOrder(order: Order): Observable<any>{
+    console.log("test")
+    return this.http.post<any>(`http://localhost:8080/orders`, {
+      customerName: order.personal.name,
+      contact: order.personal.phone,
+      deliveryDate: order.delivery.dateTime,
+      deliveryAddress: order.delivery.address,
+      type: order.delivery.type,
+      food: order.food.name,
+      toppings: order.food.toppings.join(",")
+    })
+  }
+
   getOrder(id: string): Observable<Order> {
     return this.http.get(`http://localhost:8080/orders/${id}`)
       .pipe(

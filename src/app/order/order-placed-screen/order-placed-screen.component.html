@@ -1,0 +1,14 @@
+<div class="mainContainer">
+    <p-card header="Order Placed!" subheader="Your order has been received and is being process. Thank you!" [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="footer">
+            <p-button 
+                label="Order Again" 
+                icon="pi pi-check" 
+                styleClass="p-button-secondary" 
+                [style]="{'margin-left': '.5em'}"
+                (onClick)="orderAgain()"
+            ></p-button>
+        </ng-template>
+    </p-card>
+</div>
+
