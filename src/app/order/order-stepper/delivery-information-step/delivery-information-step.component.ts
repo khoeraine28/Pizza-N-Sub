@@ -25,6 +25,11 @@ export class DeliveryInformationStepComponent implements OnInit {
   }
 
   nextPage(){
-    this.router.navigate(['order/address'])
+    //todo 'pickup' to a dictionary of constant
+    if(this.orderStepperService.getTicketInformation().delivery.type === 'pickup'){
+      this.orderStepperService.getTicketInformation().delivery.address = 'To be Picked by the customer'
+      return this.router.navigate(['order/food'])
+    }
+    return this.router.navigate(['order/address'])
   }
 }
