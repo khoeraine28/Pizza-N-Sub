@@ -2,6 +2,6 @@ import { PersonalInformation } from "src/app/order/order-stepper/order-type/orde
 
 export interface OrderRow {
     customerInfo: PersonalInformation;
-    date: Date;
+    delivery: Date;
     id: string;
 }

@@ -79,7 +79,7 @@ export class OrderService {
             customerInfo: { 
               name: order.customerName, 
               phone: order.contact }, 
-            date: new Date(order.deliveryDate) 
+            delivery: new Date(order.deliveryDate) 
           }))
         ))
       )
