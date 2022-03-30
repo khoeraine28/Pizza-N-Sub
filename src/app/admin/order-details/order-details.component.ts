@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Order } from 'src/app/order/order-stepper/order-type/order.type';
+import { OrderService } from 'src/app/order/order.service';
 
 @Component({
   selector: 'app-order-details',
@@ -7,32 +10,16 @@ import { Order } from 'src/app/order/order-stepper/order-type/order.type';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-  order!: Order;
+  order!: Observable<Order>;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
-    //@todo should be fetched from api
-    this.order = {
-      personal: { 
-        name: 'Wendell Soriano', 
-        phone: '09212843062'
-      },
-      delivery: {
-        dateTime: new Date(),
-        address: 'Calzadang bayu, Porac, Pampanga',
-        type: 'delivery'
-      },
-      food: {
-        name: 'pizza',
-        toppings: [
-          'Pepperoni',
-          'Mushrooms',
-          'Black Olives',
-          'Pineapple',
-        ]
-      }
-    }
+    const selectedOrder: string = this.route.snapshot.paramMap.get(`orderId`) || '';
+    this.order = this.orderService.getOrder(selectedOrder)
   }
 
 }

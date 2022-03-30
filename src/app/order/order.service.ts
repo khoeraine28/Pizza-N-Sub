@@ -1,14 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, mergeMap, Observable } from 'rxjs';
 import { OrderRow } from '../admin/orders-screen/order-screen.type';
-import { FoodName } from './order-stepper/order-type/order.type';
+import { FoodName, Order } from './order-stepper/order-type/order.type';
 import { ToppingOption } from './order-stepper/order-type/topping.type';
 
+//@todo api endpoints should not be hardcoded
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getFoodToppingOptions(food: FoodName): Array<ToppingOption> {
     //@todo fetch from api
@@ -33,13 +36,39 @@ export class OrderService {
     return [];
   }
 
-  getOrderList(): Array<OrderRow> {
-    //@todo fetch from api
-    return [
-      { id: '1', customerInfo: { name: 'Wendell Soriano', phone: '09212843062' }, date: new Date() },
-      { id: '2', customerInfo: { name: 'Rozil Soriano', phone: '0943849903' }, date: new Date(2022, 3, 30, 8) },
-      { id: '3', customerInfo: { name: 'Amaranthine Soriano', phone: '09445567798' }, date: new Date(2022, 3, 30, 9) },
-      { id: '4', customerInfo: { name: 'Buddy Soriano', phone: '09227789340' }, date: new Date(2022, 3, 30, 10) },
-    ]
+  getOrder(id: string): Observable<Order> {
+    return this.http.get(`http://localhost:8080/orders/${id}`)
+      .pipe(
+        map((order: any): Order => ({
+          personal: {
+            name: order.customerName,
+            phone: order.contact
+          },
+          delivery: {
+            dateTime: new Date(order.deliveryDate),
+            address: order.deliveryAddress,
+            type: order.type
+          },
+          food: {
+            name: order.food,
+            toppings: order.toppings.split(",").map((a: string) => a.trim())
+          }
+        }))
+      )
+  }
+
+  getOrderList(): Observable<Array<OrderRow>> {
+    return this.http.get(`http://localhost:8080/orders`)
+      .pipe(
+        map((res: any): Array<OrderRow> => (
+          res.map((order: any) => ({ 
+            id: order.id, 
+            customerInfo: { 
+              name: order.customerName, 
+              phone: order.contact }, 
+            date: new Date(order.deliveryDate) 
+          }))
+        ))
+      )
   }
 }

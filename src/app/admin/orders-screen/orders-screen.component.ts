@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 import { OrderService } from 'src/app/order/order.service';
 import { OrderRow } from './order-screen.type';
 
@@ -10,7 +11,7 @@ import { OrderRow } from './order-screen.type';
 })
 export class OrdersScreenComponent implements OnInit {
 
-  orders: Array<OrderRow> = [];
+  orders!: Observable<Array<OrderRow>>;
 
   constructor(
     private orderService: OrderService,

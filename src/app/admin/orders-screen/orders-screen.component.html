@@ -1,4 +1,4 @@
-<p-table [value]="orders" selectionMode="single">
+<p-table [value]="(orders | async)!" selectionMode="single">
     <ng-template pTemplate="header">
         <tr>
             <th>Name</th>
