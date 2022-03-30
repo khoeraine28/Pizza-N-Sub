@@ -1,0 +1,20 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Delivery Address
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Please enter the delivery address
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div>
+            <div style="margin-bottom: 10px;">Delivery Address</div>
+            <input id="deliveryAddress" [(ngModel)]="deliveryInformation.address" type="text" required pInputText> 
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button label="Previous" (onClick)="previousPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+    </ng-template>
+</p-card>

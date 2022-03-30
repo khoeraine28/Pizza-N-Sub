@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderStepperComponent } from './order-stepper.component';
+import { OrderStepperIndexComponent } from './order-stepper-index.component';
 
-describe('OrderStepperComponent', () => {
-  let component: OrderStepperComponent;
-  let fixture: ComponentFixture<OrderStepperComponent>;
+describe('OrderStepperIndexComponent', () => {
+  let component: OrderStepperIndexComponent;
+  let fixture: ComponentFixture<OrderStepperIndexComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrderStepperComponent ]
+      declarations: [ OrderStepperIndexComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrderStepperComponent);
+    fixture = TestBed.createComponent(OrderStepperIndexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,36 @@
+<div class="mainContainer">
+    <div>
+        <div class="label">Customer</div>
+        <div>{{order.personal.name}}</div>
+    </div>
+    <p-divider></p-divider>
+    <div>
+        <div class="label">Phone</div>
+        <div>{{order.personal.phone}}</div>
+    </div>
+    <p-divider></p-divider>
+    <div>
+        <div class="label">Order</div>
+        <div>{{order.food.name}}</div>
+    </div>
+    <p-divider></p-divider>
+    <div>
+        <div class="label">Toppings</div>
+        <div>{{order.food.toppings}}</div>
+    </div>
+    <p-divider></p-divider>
+    <div>
+        <div class="label">Delivery Mode</div>
+        <div>{{order.delivery.type}}</div>
+    </div>
+    <p-divider></p-divider>
+    <div>
+        <div class="label">Address</div>
+        <div>{{order.delivery.address}}</div>
+    </div>
+    <p-divider></p-divider>
+    <div>
+        <div class="label">Time</div>
+        <div>{{order.delivery.dateTime | date:'medium'}}</div>
+    </div>
+</div>

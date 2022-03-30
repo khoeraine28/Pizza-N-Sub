@@ -1,0 +1,17 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Confirm
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Please review your order
+    </ng-template>
+    <ng-template pTemplate="content">
+        <app-order-details-preview [order]="order"></app-order-details-preview>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button label="Previous" (onClick)="previousPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+            <p-button label="Place Order" (onClick)="placeOrder()" icon="pi pi-check" iconPos="left"></p-button>
+        </div>
+    </ng-template>
+</p-card>

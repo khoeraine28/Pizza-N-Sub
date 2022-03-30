@@ -1,0 +1,32 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Delivery
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Please enter when and how your order will be delivered
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div>
+            <div style="margin-bottom: 10px;">Delivery Time</div>
+            <p-calendar [(ngModel)]="deliveryInformation.dateTime" [showTime]="true" [hourFormat]="'12'"></p-calendar>
+        </div>
+        <br>
+        <div>
+            <div style="margin-bottom: 10px;">Delivery Mode</div>
+            <div style="margin-bottom: 4px;">
+                <p-radioButton name="deliveryMode" value="pickup" [(ngModel)]="deliveryInformation.type"  inputId="pickup"></p-radioButton>
+                <label style="padding-left: 5px;" for="pickup">Pickup</label>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <p-radioButton name="deliveryMode" value="delivery" [(ngModel)]="deliveryInformation.type" inputId="delivery"></p-radioButton>
+                <label style="padding-left: 5px;" for="delivery">Delivery</label>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button label="Previous" (onClick)="previousPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+    </ng-template>
+</p-card>

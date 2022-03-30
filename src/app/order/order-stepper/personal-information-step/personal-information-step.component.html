@@ -1,0 +1,23 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Personal Information
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Please enter your name and contact details
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div style="display: block;">
+            <div>Name</div>
+            <input id="firstname" [(ngModel)]="personalInformation.name" type="text" required pInputText> 
+        </div>
+        <div style="display: block;  margin-top: 15px;">
+            <div>Contact</div>
+            <input id="contact" [(ngModel)]="personalInformation.phone" type="text" required pInputText> 
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+    </ng-template>
+</p-card>

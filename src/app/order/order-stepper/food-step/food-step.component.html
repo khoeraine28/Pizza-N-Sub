@@ -1,0 +1,24 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Food
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Please select your order
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div style="margin-bottom: 4px;">
+            <p-radioButton name="food" value="pizza" [(ngModel)]="food.name"  inputId="pizza"></p-radioButton>
+            <label style="padding-left: 3px;" for="pizza">Pizza</label>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <p-radioButton name="food" value="sub" [(ngModel)]="food.name" inputId="sub"></p-radioButton>
+            <label style="padding-left: 3px;" for="sub">Sub</label>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button label="Previous" (onClick)="previousPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+    </ng-template>
+</p-card>

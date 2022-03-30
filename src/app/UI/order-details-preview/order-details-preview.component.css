@@ -1,0 +1,11 @@
+.mainContainer {
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    color: rgb(65, 65, 65);
+}
+
+.label {
+    font-weight: 600;
+    color: black;
+}

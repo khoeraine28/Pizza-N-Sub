@@ -1,0 +1,22 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Toppings
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        please select your toppings (you can select up to 3 toppings)
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div *ngFor="let toppingOption of toppingOptions">
+            <div style="margin-bottom: 5px;">
+                <p-checkbox (onChange)="onToppingChange($event)" name="group1" value="{{toppingOption.value}}" [(ngModel)]="food.toppings" inputId="{{toppingOption.value}}"></p-checkbox>
+                <label style="padding-left: 3px;" for="{{toppingOption.value}}">{{toppingOption.label}}</label>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button label="Previous" (onClick)="previousPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+    </ng-template>
+</p-card>
